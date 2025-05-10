@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+
 import { mockProperties } from './data/mockProperties';
 import PropertyCard from './components/PropertyCard';
 import SearchBar from './components/SearchBar';
@@ -6,6 +7,9 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import PropertyModal from './components/PropertyModal';
 import Loader from './components/Loader';
+import AboutPage from './pages/AboutPage';
+import { Routes } from 'react-router-dom';
+
 
 function App() {
   const [properties, setProperties] = useState([]);
@@ -63,9 +67,8 @@ function App() {
   };
 
   return (
-    // Removed bg-gray-50 to prevent visual issues with modal
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <Navbar />
+    <div className="min-h-screen flex flex-col bg-gray-50 w-full">    
+    <Navbar />
       
       {/* Increased padding for better spacing */}
       <main className="flex-grow container mx-auto px-4 py-6">

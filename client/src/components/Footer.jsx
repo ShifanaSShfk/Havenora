@@ -28,9 +28,9 @@ export default function Footer() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
               <address className="text-gray-300 not-italic">
-                <p>123 MG Road</p>
-                <p>Kochi, Kerala</p>
-                <p className="mt-2">Phone: +91 9876543210</p>
+                <p>Havenora</p>
+                <p>Thiruvananthapuram, Kerala</p>
+                <p className="mt-2">Phone: +91 7510100710</p>
                 <p>Email: info@havenora.com</p>
               </address>
             </div>
