@@ -1,21 +1,24 @@
-const pool = require('./db');
+import pool from './db';
 
 const setupDatabase = async () => {
   try {
-    // Users table (updated to match your contact.js expectations)
+    // Users table with proper password storage
     await pool.query(`
       CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
         name VARCHAR(100) NOT NULL,
         email VARCHAR(100) UNIQUE NOT NULL,
-        password VARCHAR(100) NOT NULL,
+        password_hash VARCHAR(255) NOT NULL,
         phone VARCHAR(20),
         role VARCHAR(20) DEFAULT 'buyer',
-        created_at TIMESTAMP DEFAULT NOW()
+        reset_token VARCHAR(255),
+        reset_token_expiry TIMESTAMP,
+        created_at TIMESTAMP DEFAULT NOW(),
+        last_login TIMESTAMP
       );
     `);
 
-    // Properties table (updated to match your contact.js expectations)
+    // Properties table (unchanged)
     await pool.query(`
       CREATE TABLE IF NOT EXISTS properties (
         id SERIAL PRIMARY KEY,
@@ -35,7 +38,7 @@ const setupDatabase = async () => {
       );
     `);
 
-    // Contacts/Inquiries table (for your contact routes)
+    // Contacts table (unchanged)
     await pool.query(`
       CREATE TABLE IF NOT EXISTS contacts (
         id SERIAL PRIMARY KEY,
@@ -55,7 +58,7 @@ const setupDatabase = async () => {
       );
     `);
 
-    // Favorites table (for user favorite properties)
+    // Favorites table (unchanged)
     await pool.query(`
       CREATE TABLE IF NOT EXISTS favorites (
         id SERIAL PRIMARY KEY,
@@ -66,17 +69,18 @@ const setupDatabase = async () => {
       );
     `);
 
-    console.log('Database tables created successfully');
+    console.log('✅ Database tables created successfully');
   } catch (err) {
-    console.error('Error setting up database:', err);
+    console.error('❌ Error setting up database:', err);
+    throw err;
   }
 };
 
 // Only run this if called directly
 if (require.main === module) {
-  setupDatabase().then(() => {
-    process.exit(0);
-  });
+  setupDatabase()
+    .then(() => process.exit(0))
+    .catch(() => process.exit(1));
 }
 
-module.exports = setupDatabase;
+export default setupDatabase;
