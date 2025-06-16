@@ -1,0 +1,14 @@
+# Ignore environment files
+.env
+.env.*
+
+# Ignore Node modules
+node_modules/
+
+# Ignore build files
+dist/
+build/
+
+# OS / Editor junk
+.DS_Store
+*.log
