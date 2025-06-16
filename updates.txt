@@ -1,0 +1,16 @@
+# 8 May 2025    Thurs
+The idea of building this business (i will call this big) had been in my mind for quite a long time now. My father had been a self realtor for some time. Using the advancements in our hand, I always wanted to bring this up as something big.
+Something I can work with passion!
+
+# 9 May 2025    Fri
+Fixed the name "Havenora" - Haven + Aura 
+Got a github page for this.
+Need a frontend before monday(12/may)
+
+
+# 14 June 2025
+Claude backend coding
+
+// server/index.js
+
+
